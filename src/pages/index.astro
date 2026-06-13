@@ -1,7 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
 ---
 
 <Layout loader={true}>
-  <!-- Sections are added incrementally: Nav, Hero, About, Experience, Projects, Stack, Writing, Contact, Footer -->
+  <span id="top"></span>
+  <Nav />
+  <main>
+    <!-- Sections added incrementally: Hero, About, Experience, Projects, Stack, Writing, Contact, Footer -->
+  </main>
 </Layout>
