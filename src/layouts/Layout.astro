@@ -55,5 +55,49 @@ const {
     }
 
     <slot />
+
+    <script>
+      import Lenis from 'lenis';
+      import { gsap } from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReduced) {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // Smooth scroll for in-page anchor links (homepage sections).
+        const NAV_OFFSET = -70;
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#') return;
+            const target = document.querySelector(href);
+            if (!target) return;
+            e.preventDefault();
+            lenis.scrollTo(target as HTMLElement, { offset: NAV_OFFSET });
+          });
+        });
+
+        // If we arrive from another page with a hash (e.g. /#projects), scroll to it.
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            requestAnimationFrame(() =>
+              lenis.scrollTo(target as HTMLElement, { offset: NAV_OFFSET, immediate: true })
+            );
+          }
+        }
+      }
+    </script>
   </body>
 </html>
