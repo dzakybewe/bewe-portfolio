@@ -1,0 +1,54 @@
+---
+const groups = [
+  { label: 'Mobile', items: ['Flutter', 'Dart', 'Kotlin', 'Jetpack Compose', 'BLoC', 'Provider', 'ObjectBox', 'Firebase'] },
+  { label: 'Web', items: ['Next.js', 'Tailwind CSS', 'HTML', 'CSS', 'Laravel', 'next-intl'] },
+  { label: 'Backend & Data', items: ['Supabase', 'Firebase', 'SQL', 'Python'] },
+  { label: 'Tools', items: ['Git', 'Figma', 'Vercel', 'OneSignal', 'PostHog'] },
+];
+
+const items = groups.flatMap((g) => g.items.map((name) => ({ name, group: g.label })));
+---
+
+<section id="stack" class="w-full bg-cream-2 py-12 lg:py-20">
+  <div class="max-w-container mx-auto px-7 lg:px-8">
+    <p class="eyebrow">Stack</p>
+    <h2 class="stack-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-ink mb-8">
+      Tools I reach for<br />
+      when things need to <em class="italic text-accent">ship</em>.
+    </h2>
+
+    <div class="stack-grid">
+      {
+        items.map((item) => (
+          <div class="stack-item">
+            <span class="font-sans text-[12px] font-medium text-ink">{item.name}</span>
+            <span class="font-sans text-[8px] uppercase tracking-[1.5px] text-ink-light mt-1">
+              {item.group}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--color-rule);
+    border: 0.5px solid var(--color-rule);
+  }
+  @media (min-width: 768px) {
+    .stack-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stack-item {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-cream-2);
+    padding: 16px;
+  }
+</style>
