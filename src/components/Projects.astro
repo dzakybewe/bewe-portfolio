@@ -46,31 +46,3 @@ const projects = (await getCollection('projects')).sort(
     </div>
   </div>
 </section>
-
-<style>
-  .project-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 18px 8px;
-    margin: 0 -8px;
-    border-bottom: 0.5px solid var(--color-rule);
-    transition: background 0.2s ease;
-  }
-  .project-row:first-of-type {
-    border-top: 0.5px solid var(--color-rule);
-  }
-  .project-row:hover {
-    background: var(--color-cream-2);
-  }
-  .row-arrow {
-    font-size: 14px;
-    color: var(--color-rule);
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-  .project-row:hover .row-arrow {
-    color: var(--color-accent);
-    transform: translate(2px, -2px);
-  }
-</style>

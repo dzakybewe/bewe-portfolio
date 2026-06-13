@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+
+// TODO: Replace these placeholder articles with real ones when you start writing.
+// Add new articles by creating .md files in src/content/writing/
+// Article slugs become the URL automatically.
+const articles = (await getCollection('writing')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<section id="writing" class="w-full bg-cream py-12 lg:py-20">
+  <div class="max-w-container mx-auto px-7 lg:px-8">
+    <p class="eyebrow">Writing</p>
+    <h2 class="writing-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-ink mb-3">
+      Thinking out loud<br />
+      about <em class="italic text-accent">building things</em>.
+    </h2>
+    <p class="writing-headline font-sans text-[10px] text-ink-light mb-6">
+      Occasional notes on development, product decisions, and shipping solo.
+    </p>
+
+    <div>
+      {
+        articles.map((a, i) => (
+          <a href={`/writing/${a.id}`} class="writing-row project-row">
+            <div class="flex items-baseline gap-4 min-w-0">
+              <span class="font-serif text-[13px] text-rule shrink-0">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-serif italic text-[16px] text-ink min-w-0 truncate">{a.data.title}</h3>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+              <span class="font-sans text-[9px] text-ink-light">{a.data.date}</span>
+              <span class="row-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
