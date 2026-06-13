@@ -16,7 +16,7 @@ const articles = (await getCollection('writing')).sort(
       Thinking out loud<br />
       about <em class="italic text-accent">building things</em>.
     </h2>
-    <p class="writing-headline font-sans text-[10px] text-ink-light mb-6">
+    <p class="writing-headline font-sans text-[13px] text-ink-light mb-6">
       Occasional notes on development, product decisions, and shipping solo.
     </p>
 
@@ -31,7 +31,7 @@ const articles = (await getCollection('writing')).sort(
               <h3 class="font-serif italic text-[16px] text-ink min-w-0 truncate">{a.data.title}</h3>
             </div>
             <div class="flex items-center gap-3 shrink-0">
-              <span class="font-sans text-[12px] text-ink-light">{a.data.date}</span>
+              <span class="font-sans text-[13px] text-ink-light">{a.data.date}</span>
               <span class="row-arrow" aria-hidden="true">↗</span>
             </div>
           </a>

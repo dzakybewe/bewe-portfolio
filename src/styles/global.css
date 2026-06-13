@@ -183,7 +183,7 @@ html.lenis body {
 /* Rendered markdown bodies (project & article pages) */
 .prose-body p {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 2;
   color: var(--color-ink-mid);
@@ -211,7 +211,7 @@ html.lenis body {
 }
 .prose-body li {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.9;
   color: var(--color-ink-mid);
