@@ -52,20 +52,15 @@
 
 <style>
   .hero {
-    padding-top: 120px;
-    padding-bottom: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    /* clear the fixed 64px nav, plus breathing room */
+    padding-top: 96px;
+    padding-bottom: 64px;
   }
-  @media (min-width: 768px) {
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 64px;
-      padding-bottom: 64px;
-    }
-    .hero > div {
-      width: 100%;
-    }
+  .hero > div {
+    width: 100%;
   }
 
   /* Eyebrow on dark background */

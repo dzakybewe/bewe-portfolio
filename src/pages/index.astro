@@ -65,12 +65,21 @@ import Footer from '../components/Footer.astro';
   }
 
   function initReveals() {
-    revealOnScroll(['.about-headline', '.about-body', '.education-entry', '.glance-row'], '#about');
-    revealOnScroll('.experience-entry', '#experience');
-    revealOnScroll(['.projects-headline', '.project-row'], '#projects');
-    revealOnScroll('.stack-item', '#stack');
-    revealOnScroll(['.writing-headline', '.writing-row'], '#writing');
-    revealOnScroll(['.contact-headline', '.contact-body', '.contact-link'], '#contact');
+    // Selectors are section-scoped so an element that matches more than one
+    // class (e.g. a writing row also carries .project-row) is never tweened
+    // by two triggers — double targeting could leave it stuck at opacity 0.
+    revealOnScroll(
+      ['#about .about-headline', '#about .about-body', '#about .education-entry', '#about .glance-row'],
+      '#about'
+    );
+    revealOnScroll('#experience .experience-entry', '#experience');
+    revealOnScroll(['#projects .projects-headline', '#projects .project-row'], '#projects');
+    revealOnScroll('#stack .stack-item', '#stack');
+    revealOnScroll(['#writing .writing-headline', '#writing .writing-row'], '#writing');
+    revealOnScroll(
+      ['#contact .contact-headline', '#contact .contact-body', '#contact .contact-link'],
+      '#contact'
+    );
   }
 
   // Nav: solid background past the hero
@@ -99,6 +108,9 @@ import Footer from '../components/Footer.astro';
   });
 
   initReveals();
+
+  // Recalculate trigger positions once everything (fonts, images, Lenis) settles.
+  window.addEventListener('load', () => ScrollTrigger.refresh());
 
   // Loading screen
   const loader = document.getElementById('loader');

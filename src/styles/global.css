@@ -33,11 +33,9 @@
 
 /* TODO: Add dark mode overrides here if dark mode support is wanted later */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* NOTE: do not add an unlayered `* { margin:0; padding:0 }` reset here —
+   unlayered rules beat Tailwind's @layer utilities, which would cancel
+   every px-/py-/mx-/mb- utility. Tailwind's preflight already resets these. */
 
 html {
   background: var(--color-cream);
