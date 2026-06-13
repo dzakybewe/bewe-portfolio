@@ -39,8 +39,8 @@ bewe-portfolio/
 │   └── logo.svg         <!-- TODO: Add logo file here when designed. Currently using text logo. -->
 │
 ├── src/
+│   ├── content.config.ts          ← Astro content collection schema (Content Layer API)
 │   ├── content/
-│   │   ├── config.ts              ← Astro content collection schema definitions
 │   │   ├── projects/
 │   │   │   ├── pangkasin.md
 │   │   │   ├── kartika-jasa-karya.md
@@ -83,19 +83,26 @@ bewe-portfolio/
 
 ---
 
-## Astro content collections (`src/content/config.ts`)
+## Astro content collections (`src/content.config.ts`)
+
+Astro 6 uses the Content Layer API — collections load via the `glob` loader and the
+config lives at `src/content.config.ts`. Markdown bodies are rendered with
+`render(entry)` from `astro:content`.
 
 ```ts
 import { defineCollection, z } from 'astro:content'
+import { glob } from 'astro/loaders'
 
 const projects = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
   schema: z.object({
     title: z.string(),
-    subtitle: z.string(),
-    period: z.string(),
+    subtitle: z.string(),       // e.g. "SaaS · Personal Project"
+    period: z.string(),         // e.g. "2025 – ongoing"
     tags: z.array(z.string()),
     summary: z.string(),
+    order: z.number(),          // homepage list order (01, 02, …)
+    highlights: z.array(z.string()),
     links: z.object({
       live: z.string().optional(),
       github: z.string().optional(),
@@ -105,10 +112,11 @@ const projects = defineCollection({
 })
 
 const writing = defineCollection({
-  type: 'content',
+  loader: glob({ pattern: '**/*.md', base: './src/content/writing' }),
   schema: z.object({
     title: z.string(),
     date: z.string(),
+    order: z.number(),          // homepage list order (newest first)
   }),
 })
 
