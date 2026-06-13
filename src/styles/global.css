@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ── Design tokens ───────────────────────────────────────────────
+   Declared in @theme so Tailwind v4 emits both utility classes
+   (bg-cream, text-ink-mid, font-serif, max-w-container, …) and the
+   matching CSS variables (var(--color-cream), var(--font-serif), …)
+   used in the custom CSS below. */
+@theme {
+  /* colors */
+  --color-cream: #FDFBF6;
+  --color-cream-2: #F5F0E8;
+  --color-ink: #1C1208;
+  --color-ink-mid: #6A5540;
+  --color-ink-light: #A89070;
+  --color-rule: #E2D5C0;
+  --color-accent: #2A6B5E;
+  --color-accent-light: #E2F2EF;
+  --color-accent-border: #5AA090;
+  --color-dark: #1C1208;
+  --color-dark-2: #130E06;
+  --color-dark-rule: #2A2010;
+  --color-dark-text: #C9B99A;
+  --color-dark-muted: #5A4A30;
+
+  /* fonts */
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* container widths → max-w-container / max-w-content */
+  --container-container: 1100px;
+  --container-content: 720px;
+}
+
+/* TODO: Add dark mode overrides here if dark mode support is wanted later */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Loader (homepage only) */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: var(--color-dark);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+#loader-name {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  color: var(--color-dark-text);
+  opacity: 0;
+}
+#loader-bar-track {
+  width: 160px;
+  height: 0.5px;
+  background: var(--color-dark-rule);
+}
+#loader-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--color-accent);
+}
