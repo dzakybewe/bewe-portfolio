@@ -181,3 +181,40 @@ html.lenis body {
   color: var(--color-accent);
   transform: translate(2px, -2px);
 }
+
+/* Rendered markdown bodies (project & article pages) */
+.prose-body p {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 2;
+  color: var(--color-ink-mid);
+}
+.prose-body p + p {
+  margin-top: 1.4em;
+}
+.prose-body h2,
+.prose-body h3 {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-ink);
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+}
+.prose-body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose-body ul {
+  margin-top: 1em;
+  padding-left: 1.1em;
+  list-style: none;
+}
+.prose-body li {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--color-ink-mid);
+}

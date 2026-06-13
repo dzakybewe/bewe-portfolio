@@ -1,0 +1,119 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, subtitle, period, tags, summary, highlights, links } = entry.data;
+---
+
+<Layout title={`${title} — Dzaky Ahmadin`} description={summary}>
+  <Nav home={false} />
+  <main class="page-fade">
+    <!-- Header -->
+    <section class="w-full bg-cream-2 pt-28 pb-12 lg:pt-32 lg:pb-16">
+      <div class="max-w-container mx-auto px-7 lg:px-8">
+        <a href="/#projects" class="back-link">← Back to projects</a>
+
+        <p class="eyebrow mt-6">{subtitle} · {period}</p>
+        <h1 class="font-serif text-[26px] md:text-[36px] leading-[1.15] text-ink mb-4">
+          {title}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-1.5 mb-5">
+          {tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+
+        <hr class="hairline mb-5" />
+
+        <p class="font-sans text-[11px] font-light leading-[1.8] text-ink-mid max-w-[60ch]">
+          {summary}
+        </p>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="w-full bg-cream py-12 lg:py-16">
+      <div class="max-w-content mx-auto px-7 lg:px-8">
+        <div class="prose-body">
+          <Content />
+        </div>
+
+        <div class="mt-10">
+          <p class="section-label">Highlights</p>
+          <ul class="flex flex-col gap-2">
+            {
+              highlights.map((h) => (
+                <li class="font-sans text-[11px] font-light leading-[1.7] text-ink-mid flex gap-2">
+                  <span class="text-accent select-none">—</span>
+                  <span>{h}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        {
+          links && (links.live || links.github || links.gitlab) && (
+            <div class="mt-10">
+              <p class="section-label">Links</p>
+              <div class="flex flex-wrap gap-x-6 gap-y-2">
+                {links.live && (
+                  <a href={links.live} target="_blank" rel="noopener noreferrer" class="case-link">
+                    Live ↗
+                  </a>
+                )}
+                {links.github && (
+                  <a href={links.github} target="_blank" rel="noopener noreferrer" class="case-link">
+                    GitHub ↗
+                  </a>
+                )}
+                {links.gitlab && (
+                  <a href={links.gitlab} target="_blank" rel="noopener noreferrer" class="case-link">
+                    GitLab ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-ink-light);
+    transition: color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+  .case-link {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-accent);
+    transition: opacity 0.2s ease;
+  }
+  .case-link:hover {
+    opacity: 0.7;
+  }
+</style>
