@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('writing');
+  return articles.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const { title, date } = entry.data;
+---
+
+<Layout title={`${title} — Dzaky Ahmadin`} description={title}>
+  <Nav home={false} />
+  <main class="page-fade">
+    <!-- Header -->
+    <section class="w-full bg-cream-2 pt-28 pb-12 lg:pt-32 lg:pb-16">
+      <div class="max-w-container mx-auto px-7 lg:px-8">
+        <a href="/#writing" class="back-link">← Back to writing</a>
+
+        <p class="eyebrow mt-6">{date}</p>
+        <h1 class="font-serif text-[26px] md:text-[36px] leading-[1.15] text-ink mb-5">
+          {title}
+        </h1>
+
+        <hr class="hairline" />
+      </div>
+    </section>
+
+    <!-- Article body -->
+    <section class="w-full bg-cream py-12 lg:py-16">
+      <div class="max-w-content mx-auto px-7 lg:px-8">
+        <article class="prose-body">
+          <Content />
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .back-link {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-ink-light);
+    transition: color 0.2s ease;
+  }
+  .back-link:hover {
+    color: var(--color-accent);
+  }
+</style>
