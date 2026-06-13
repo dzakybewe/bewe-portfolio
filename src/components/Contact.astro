@@ -1,0 +1,66 @@
+---
+const links = [
+  { label: 'dzakybewe@gmail.com', href: 'mailto:dzakybewe@gmail.com' },
+  { label: 'linkedin.com/in/dzakybewe', href: 'https://www.linkedin.com/in/dzakybewe/' },
+  { label: 'github.com/dzakybewe', href: 'https://github.com/dzakybewe' },
+  { label: 'gitlab.com/dzakybewe', href: 'https://gitlab.com/dzakybewe' },
+];
+---
+
+<section id="contact" class="contact-section w-full bg-dark text-dark-text py-12 lg:py-20">
+  <div class="max-w-container mx-auto px-7 lg:px-8">
+    <p class="eyebrow">Contact</p>
+    <h2 class="contact-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-cream mb-3">
+      If you're hiring someone<br />
+      who <em class="italic text-accent">ships</em>, let's talk.
+    </h2>
+    <p class="contact-body font-sans text-[11px] font-light leading-[1.9] text-dark-text max-w-[52ch] mb-8">
+      I'm looking for a full-time role in mobile or web development where I can work on
+      products that matter. Jakarta-based, open to remote.
+    </p>
+
+    <div class="max-w-[560px]">
+      {
+        links.map((link, i) => (
+          <a
+            href={link.href}
+            class:list={['contact-link', { 'border-t': i > 0 }]}
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            <span class="font-sans text-[13px]">{link.label}</span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    border-top: 2px solid var(--color-ink);
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    color: var(--color-dark-text);
+    border-color: var(--color-dark-rule);
+    transition: color 0.2s ease;
+  }
+  .contact-link:hover {
+    color: var(--color-accent);
+  }
+  .contact-arrow {
+    font-size: 14px;
+    color: var(--color-dark-muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .contact-link:hover .contact-arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+</style>
