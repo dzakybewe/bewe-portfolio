@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Show the GSAP loading screen — homepage only. */
+  loader?: boolean;
+}
+
+const {
+  title = 'Dzaky Ahmadin — Mobile & Web Developer',
+  description = 'Mobile and web developer from Jakarta. Flutter, Next.js, real production apps. Open to full-time roles.',
+  loader = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Dzaky Ahmadin Berkah Wardana" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <!-- TODO: Replace placeholder domain with your real domain once set up -->
+    <link rel="canonical" href="https://placeholder.com" />
+    <!-- TODO: Add og:image once you have a social preview image. Place at public/og-image.png -->
+    <!-- <meta property="og:image" content="https://yourdomain.com/og-image.png" /> -->
+
+    <!-- Google Fonts: DM Serif Display (+ italic) and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {
+      loader && (
+        <div id="loader">
+          <div id="loader-name">Dzaky Ahmadin</div>
+          <div id="loader-bar-track">
+            <div id="loader-bar" />
+          </div>
+        </div>
+      )
+    }
+
+    <slot />
+  </body>
+</html>
