@@ -14,11 +14,11 @@ const glance = [
     <!-- Left: bio + education -->
     <div>
       <p class="eyebrow">About</p>
-      <h2 class="about-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-ink mb-3">
+      <h2 class="about-headline font-serif text-[26px] md:text-[28px] leading-[1.2] text-ink mb-3">
         I care about what<br />
         gets built, and <em class="italic text-accent">why</em>.
       </h2>
-      <p class="about-body font-sans text-[11px] font-light leading-[1.9] text-ink-mid max-w-[58ch]">
+      <p class="about-body font-sans text-[15px] font-light leading-[1.9] text-ink-mid max-w-[58ch]">
         I'm a software developer from South Tangerang, now based in Jakarta. I work
         across mobile and web — Flutter for production apps, Next.js for the web. I like
         working on products that real people use, solving problems that actually matter.
@@ -33,8 +33,8 @@ const glance = [
       <div class="education-entry py-3">
         <h3 class="font-serif text-[15px] text-ink">Brawijaya University</h3>
         <p class="font-sans text-[10px] text-ink-mid mt-1">Bachelor of Computer Science</p>
-        <p class="font-sans text-[9px] text-ink-light mt-1">Aug 2021 – Jul 2025 · GPA 3.76 / 4.00</p>
-        <p class="font-sans text-[9px] font-light leading-[1.7] text-ink-light mt-2 max-w-[60ch]">
+        <p class="font-sans text-[12px] text-ink-light mt-1">Aug 2021 – Jul 2025 · GPA 3.76 / 4.00</p>
+        <p class="font-sans text-[12px] font-light leading-[1.7] text-ink-light mt-2 max-w-[60ch]">
           Thesis: Sentiment Analysis of MyPertamina App reviews using XGBoost &amp; Word2Vec
         </p>
       </div>
@@ -44,8 +44,8 @@ const glance = [
           Bangkit Academy 2024 — by Google, GoTo, Traveloka
         </h3>
         <p class="font-sans text-[10px] text-ink-mid mt-1">Android Learning Path</p>
-        <p class="font-sans text-[9px] text-ink-light mt-1">Feb – Jun 2024</p>
-        <p class="font-sans text-[9px] font-light leading-[1.7] text-ink-light mt-2 max-w-[60ch]">
+        <p class="font-sans text-[12px] text-ink-light mt-1">Feb – Jun 2024</p>
+        <p class="font-sans text-[12px] font-light leading-[1.7] text-ink-light mt-2 max-w-[60ch]">
           Built BiteWise, a personalized food recommendation app, collaborating with ML
           and Cloud teams
         </p>
@@ -59,7 +59,7 @@ const glance = [
         {
           glance.map((row, i) => (
             <div class:list={['glance-row flex justify-between gap-4 py-3', { 'border-t border-rule': i > 0 }]}>
-              <dt class="font-sans text-[9px] uppercase tracking-[1.5px] text-ink-light">{row.label}</dt>
+              <dt class="font-sans text-[12px] uppercase tracking-[1.5px] text-ink-light">{row.label}</dt>
               <dd class="font-sans text-[10px] text-ink text-right">{row.value}</dd>
             </div>
           ))

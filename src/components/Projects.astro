@@ -9,7 +9,7 @@ const projects = (await getCollection('projects')).sort(
 <section id="projects" class="w-full bg-cream py-12 lg:py-20">
   <div class="max-w-container mx-auto px-7 lg:px-8">
     <p class="eyebrow">Projects</p>
-    <h2 class="projects-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-ink mb-3">
+    <h2 class="projects-headline font-serif text-[26px] md:text-[28px] leading-[1.2] text-ink mb-3">
       Things I've<br />
       built and <em class="italic text-accent">shipped</em>.
     </h2>
@@ -27,7 +27,7 @@ const projects = (await getCollection('projects')).sort(
               </span>
               <div class="min-w-0">
                 <h3 class="font-serif text-[16px] text-ink truncate">{p.data.title}</h3>
-                <p class="font-sans text-[9px] text-ink-light mt-0.5">
+                <p class="font-sans text-[12px] text-ink-light mt-0.5">
                   {p.data.subtitle} · {p.data.period}
                 </p>
               </div>

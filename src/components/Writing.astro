@@ -12,7 +12,7 @@ const articles = (await getCollection('writing')).sort(
 <section id="writing" class="w-full bg-cream py-12 lg:py-20">
   <div class="max-w-container mx-auto px-7 lg:px-8">
     <p class="eyebrow">Writing</p>
-    <h2 class="writing-headline font-serif text-[22px] md:text-[28px] leading-[1.2] text-ink mb-3">
+    <h2 class="writing-headline font-serif text-[26px] md:text-[28px] leading-[1.2] text-ink mb-3">
       Thinking out loud<br />
       about <em class="italic text-accent">building things</em>.
     </h2>
@@ -31,7 +31,7 @@ const articles = (await getCollection('writing')).sort(
               <h3 class="font-serif italic text-[16px] text-ink min-w-0 truncate">{a.data.title}</h3>
             </div>
             <div class="flex items-center gap-3 shrink-0">
-              <span class="font-sans text-[9px] text-ink-light">{a.data.date}</span>
+              <span class="font-sans text-[12px] text-ink-light">{a.data.date}</span>
               <span class="row-arrow" aria-hidden="true">↗</span>
             </div>
           </a>

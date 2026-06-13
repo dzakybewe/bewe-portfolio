@@ -36,7 +36,7 @@ const { title, subtitle, period, tags, summary, highlights, links } = entry.data
 
         <hr class="hairline mb-5" />
 
-        <p class="font-sans text-[11px] font-light leading-[1.8] text-ink-mid max-w-[60ch]">
+        <p class="font-sans text-[15px] font-light leading-[1.8] text-ink-mid max-w-[60ch]">
           {summary}
         </p>
       </div>
@@ -54,7 +54,7 @@ const { title, subtitle, period, tags, summary, highlights, links } = entry.data
           <ul class="flex flex-col gap-2">
             {
               highlights.map((h) => (
-                <li class="font-sans text-[11px] font-light leading-[1.7] text-ink-mid flex gap-2">
+                <li class="font-sans text-[15px] font-light leading-[1.7] text-ink-mid flex gap-2">
                   <span class="text-accent select-none">—</span>
                   <span>{h}</span>
                 </li>
@@ -96,7 +96,7 @@ const { title, subtitle, period, tags, summary, highlights, links } = entry.data
 <style>
   .back-link {
     font-family: var(--font-sans);
-    font-size: 9px;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--color-ink-light);
