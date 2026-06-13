@@ -1,0 +1,151 @@
+---
+// Hero — first section, dark background, two columns (text + photo).
+---
+
+<section class="hero w-full bg-dark text-dark-text">
+  <div
+    class="max-w-container mx-auto px-7 lg:px-8 grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-10 md:gap-12 items-center"
+  >
+    <!-- Left: text -->
+    <div>
+      <p class="hero-eyebrow eyebrow-dark flex items-center gap-2 mb-3">
+        <span class="eyebrow-line"></span>
+        Mobile &amp; Web Developer · Jakarta
+      </p>
+
+      <h1 class="hero-headline font-serif text-[30px] md:text-[44px] leading-[1.15] text-cream mb-3">
+        I build apps that<br />
+        ship to <em class="italic text-accent">real users</em>.
+      </h1>
+
+      <p class="hero-body font-sans text-[11px] font-light leading-[1.9] text-dark-text max-w-[46ch] mb-6">
+        Flutter, Android, Next.js. I work across mobile and web — from first commit
+        to production. Currently open to full-time roles.
+      </p>
+
+      <div class="hero-ctas flex flex-wrap items-center gap-5">
+        <span class="status-badge">
+          <span class="status-dot"></span>
+          Open to work
+        </span>
+      </div>
+
+      <div class="hero-ctas mt-6 flex flex-wrap items-center gap-6">
+        <a href="#projects" class="cta-primary">See my work</a>
+        <a href="#about" class="cta-secondary">Read about me →</a>
+      </div>
+    </div>
+
+    <!-- Right: photo placeholder -->
+    <div class="hero-photo flex justify-center md:justify-end">
+      <!-- TODO: Replace this placeholder with your actual photo once ready.
+           Export your photo as a PNG with transparent background.
+           Place the file at: public/photo.png
+           Then replace the placeholder div below with:
+           <img src="/photo.png" alt="Dzaky Ahmadin" class="w-full h-full object-cover object-top" /> -->
+      <div class="photo-placeholder">
+        <span>photo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+  @media (min-width: 768px) {
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+    .hero > div {
+      width: 100%;
+    }
+  }
+
+  /* Eyebrow on dark background */
+  .eyebrow-dark {
+    font-family: var(--font-sans);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--color-accent);
+  }
+  .eyebrow-line {
+    display: inline-block;
+    width: 24px;
+    height: 0.5px;
+    background: var(--color-accent);
+  }
+
+  /* Status badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-sans);
+    font-size: 9px;
+    color: var(--color-accent);
+    background: var(--color-accent-light);
+    border: 0.5px solid var(--color-accent-border);
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+  .status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  /* CTAs — adapted for the dark hero */
+  .cta-primary {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-ink);
+    background: var(--color-cream);
+    padding: 10px 22px;
+    border-radius: 0;
+    transition: opacity 0.2s ease;
+  }
+  .cta-primary:hover {
+    opacity: 0.85;
+  }
+  .cta-secondary {
+    font-family: var(--font-sans);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-dark-text);
+    transition: color 0.2s ease;
+  }
+  .cta-secondary:hover {
+    color: var(--color-accent);
+  }
+
+  /* Photo placeholder */
+  .photo-placeholder {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 300 / 380;
+    background: #2a2010;
+    border: 0.5px solid #3a3020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .photo-placeholder span {
+    font-family: var(--font-sans);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3a3020;
+  }
+</style>
