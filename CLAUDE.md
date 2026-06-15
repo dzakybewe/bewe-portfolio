@@ -9,7 +9,7 @@ Personal portfolio for **Dzaky Wardana** — mobile & web developer, Jakarta. Au
 Design language: **"Warm Studio editorial"** — cream base, dark hero/contact, forest-teal accent, serif display headings on a sans body. Calm, print-like, generous whitespace.
 
 Structure:
-- `/` — single-page scroll homepage. Sections: Hero → About → Experience → Projects → Stack → Writing → Contact → Footer.
+- `/` — single-page scroll homepage. Sections: Hero → About → Experience → Projects → Writing → Contact → Footer.
 - `/projects/[slug]` — dynamic case-study pages from content collection.
 - `/writing/[slug]` — dynamic article pages from content collection.
 
