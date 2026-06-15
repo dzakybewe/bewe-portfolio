@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 
-// TODO: Replace these placeholder articles with real ones when you start writing.
-// Add new articles by creating .md files in src/content/writing/
-// Article slugs become the URL automatically.
+// Add articles by dropping .md files in src/content/writing/ — see docs/WRITING.md.
+// When the collection is empty, the section shows a "coming soon" state instead.
 const articles = (await getCollection('writing')).sort(
   (a, b) => a.data.order - b.data.order
 );
@@ -20,24 +19,32 @@ const articles = (await getCollection('writing')).sort(
       Occasional notes on development, product decisions, and shipping solo.
     </p>
 
-    <div>
-      {
-        articles.map((a, i) => (
-          <a href={`/writing/${a.id}`} class="writing-row project-row">
-            <div class="flex items-baseline gap-4 min-w-0">
-              <span class="font-serif text-[13px] text-rule shrink-0">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h3 class="font-serif italic text-[16px] text-ink min-w-0 truncate">{a.data.title}</h3>
-            </div>
-            <div class="flex items-center gap-3 shrink-0">
-              <span class="font-sans text-[13px] text-ink-light">{a.data.date}</span>
-              <span class="row-arrow" aria-hidden="true">↗</span>
-            </div>
-          </a>
-        ))
-      }
-    </div>
+    {
+      articles.length === 0 ? (
+        <div class="writing-empty">
+          <p class="font-serif italic text-[18px] text-ink-light">
+            Writing coming soon — check back later.
+          </p>
+        </div>
+      ) : (
+        <div>
+          {articles.map((a, i) => (
+            <a href={`/writing/${a.id}`} class="writing-row project-row">
+              <div class="flex items-baseline gap-4 min-w-0">
+                <span class="font-serif text-[13px] text-rule shrink-0">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 class="font-serif italic text-[16px] text-ink min-w-0 truncate">{a.data.title}</h3>
+              </div>
+              <div class="flex items-center gap-3 shrink-0">
+                <span class="font-sans text-[13px] text-ink-light">{a.data.date}</span>
+                <span class="row-arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -46,5 +53,11 @@ const articles = (await getCollection('writing')).sort(
      invisible — use cream for a subtle highlight on this section instead. */
   .writing-row:hover {
     background: var(--color-cream);
+  }
+  .writing-empty {
+    border-top: 0.5px solid var(--color-rule);
+    border-bottom: 0.5px solid var(--color-rule);
+    padding: 48px 0;
+    text-align: center;
   }
 </style>
