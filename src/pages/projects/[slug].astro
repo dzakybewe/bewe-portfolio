@@ -64,28 +64,43 @@ const { title, subtitle, period, tags, summary, highlights, links } = entry.data
         </div>
 
         {
-          links && (links.live || links.github || links.gitlab) && (
-            <div class="mt-10">
-              <p class="section-label">Links</p>
-              <div class="flex flex-wrap gap-x-6 gap-y-2">
-                {links.live && (
-                  <a href={links.live} target="_blank" rel="noopener noreferrer" class="case-link">
-                    Live ↗
-                  </a>
-                )}
-                {links.github && (
-                  <a href={links.github} target="_blank" rel="noopener noreferrer" class="case-link">
-                    GitHub ↗
-                  </a>
-                )}
-                {links.gitlab && (
-                  <a href={links.gitlab} target="_blank" rel="noopener noreferrer" class="case-link">
-                    GitLab ↗
-                  </a>
-                )}
+          links &&
+            (links.website ||
+              links.appStore ||
+              links.playStore ||
+              links.github ||
+              links.gitlab) && (
+              <div class="mt-10">
+                <p class="section-label">Links</p>
+                <div class="flex flex-wrap gap-x-6 gap-y-2">
+                  {links.website && (
+                    <a href={links.website} target="_blank" rel="noopener noreferrer" class="case-link">
+                      Website ↗
+                    </a>
+                  )}
+                  {links.appStore && (
+                    <a href={links.appStore} target="_blank" rel="noopener noreferrer" class="case-link">
+                      App Store ↗
+                    </a>
+                  )}
+                  {links.playStore && (
+                    <a href={links.playStore} target="_blank" rel="noopener noreferrer" class="case-link">
+                      Play Store ↗
+                    </a>
+                  )}
+                  {links.github && (
+                    <a href={links.github} target="_blank" rel="noopener noreferrer" class="case-link">
+                      GitHub ↗
+                    </a>
+                  )}
+                  {links.gitlab && (
+                    <a href={links.gitlab} target="_blank" rel="noopener noreferrer" class="case-link">
+                      GitLab ↗
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          )
+            )
         }
       </div>
     </section>

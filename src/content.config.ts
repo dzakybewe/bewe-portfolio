@@ -13,9 +13,11 @@ const projects = defineCollection({
     highlights: z.array(z.string()),
     links: z
       .object({
-        live: z.string().optional(),
+        website: z.string().optional(),
         github: z.string().optional(),
         gitlab: z.string().optional(),
+        appStore: z.string().optional(),
+        playStore: z.string().optional(),
       })
       .optional(),
   }),

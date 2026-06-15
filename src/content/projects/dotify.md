@@ -2,7 +2,7 @@
 title: Dotify
 subtitle: Mobile · PT DOT Indonesia
 period: Nov 2024
-order: 5
+order: 6
 tags:
   - Flutter
   - Easy Localization

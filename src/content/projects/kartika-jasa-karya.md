@@ -15,7 +15,13 @@ highlights:
   - Swiper.js fleet carousel
   - Custom domain setup and Vercel deployment
   - Delivered solo in under 3 weeks
-# TODO: Add Kartika Jasa Karya live URL and repo URL (then add a `links:` block with `live:`/`github:`)
+  - 6 pages, 2 languages (12 total page variants)
+links:
+  website: https://kartikajasakarya.com
 ---
 
-A bilingual (EN/ID) company profile website delivered end-to-end as a solo freelance project for PT Kartika Jasa Karya. 6 pages, 12 locales, full SEO implementation. Handled everything: development, domain setup, deployment, and handoff. Delivered in under 3 weeks from kickoff to live.
+A company profile website for a marine fuel supply company based in Indonesia, available in both English and Bahasa. The company needed something that actually represented them online, so I built it from scratch using Next.js and Tailwind CSS, delivering a bilingual 6-page site in under three weeks.
+
+The most interesting requirement came from understanding the actual users: most of the company's clients are older, less tech-savvy adults. My contact asked for a 'Back' button on every page, unconventional, but I took it seriously. I routed it to the Home page, which has a clear overview of all sections, so navigation stays predictable for someone who's never used a website confidently.
+
+That decision stuck with me. Good UX sometimes means setting aside what feels right to a developer and meeting users exactly where they are.
