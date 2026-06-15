@@ -112,14 +112,19 @@ import Footer from '../components/Footer.astro';
   // Recalculate trigger positions once everything (fonts, images, Lenis) settles.
   window.addEventListener('load', () => ScrollTrigger.refresh());
 
-  // Loading screen
+  // Loading screen — runs only on the first visit of a session. On back
+  // navigation from inner pages (or any later homepage hit) the flag is set,
+  // so we skip the loader and show content immediately.
   const loader = document.getElementById('loader');
-  if (loader && !prefersReduced) {
+  const hasLoaded = sessionStorage.getItem('hasLoaded');
+
+  if (loader && !prefersReduced && !hasLoaded) {
     gsap
       .timeline({
         onComplete: () => {
           loader.style.display = 'none';
           revealHero();
+          sessionStorage.setItem('hasLoaded', 'true');
         },
       })
       .to('#loader-name', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' })
@@ -127,5 +132,6 @@ import Footer from '../components/Footer.astro';
       .to('#loader', { opacity: 0, duration: 0.4, ease: 'power2.in' }, '+=0.2');
   } else if (loader) {
     loader.style.display = 'none';
+    sessionStorage.setItem('hasLoaded', 'true');
   }
 </script>
