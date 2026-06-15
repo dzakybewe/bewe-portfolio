@@ -11,7 +11,7 @@ const glance = [
 
 <section id="about" class="w-full bg-cream py-12 lg:py-20">
   <div
-    class="max-w-container mx-auto px-7 lg:px-8 grid grid-cols-1 md:grid-cols-[1.4fr_1fr] gap-10 md:gap-14"
+    class="max-w-container mx-auto px-7 lg:px-8 grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-10 md:gap-14"
   >
     <!-- Left: bio + education -->
     <div>
@@ -43,9 +43,34 @@ const glance = [
         I'm a Computer Science graduate from Brawijaya University, currently based
         in Jakarta, looking for my next full-time role.
       </p>
+    </div>
 
-      <hr class="hairline my-8" />
+    <!-- Right: at a glance + education (two boxed cards) -->
+    <div class="about-sidebar h-fit">
+      <div class="about-card">
+      <p class="section-label">At a glance</p>
+      <dl>
+        {
+          glance.map((row, i) => (
+            <div
+              class:list={[
+                "glance-row flex justify-between gap-4 py-3",
+                { "border-t border-rule": i > 0 },
+              ]}
+            >
+              <dt class="font-sans text-[13px] uppercase tracking-[1.5px] text-ink-light">
+                {row.label}
+              </dt>
+              <dd class="font-sans text-[13px] text-ink text-right">
+                {row.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+      </div>
 
+      <div class="about-card">
       <p class="section-label">Education</p>
 
       <div class="education-entry py-3">
@@ -79,30 +104,29 @@ const glance = [
           collaborating with ML and Cloud teams
         </p>
       </div>
-    </div>
-
-    <!-- Right: at a glance -->
-    <div>
-      <p class="section-label">At a glance</p>
-      <dl>
-        {
-          glance.map((row, i) => (
-            <div
-              class:list={[
-                "glance-row flex justify-between gap-4 py-3",
-                { "border-t border-rule": i > 0 },
-              ]}
-            >
-              <dt class="font-sans text-[13px] uppercase tracking-[1.5px] text-ink-light">
-                {row.label}
-              </dt>
-              <dd class="font-sans text-[13px] text-ink text-right">
-                {row.value}
-              </dd>
-            </div>
-          ))
-        }
-      </dl>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* Sidebar holds two separate cards with a gap between them. */
+  .about-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  /* Boxed cards — set the At a Glance + Education column apart from the
+     plain bio prose on the left. */
+  .about-card {
+    background: var(--color-cream-2);
+    border: 0.5px solid var(--color-rule);
+    border-radius: 2px;
+    padding: 28px;
+  }
+  @media (min-width: 1024px) {
+    .about-card {
+      padding: 32px;
+    }
+  }
+</style>
