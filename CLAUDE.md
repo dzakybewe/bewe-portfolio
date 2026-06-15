@@ -23,7 +23,7 @@ Loader (GSAP timeline) + scroll reveals run on the homepage only. Inner pages ju
 | Styling | **Tailwind CSS v4** `^4.3.1` | `@tailwindcss/vite` plugin — **no** `tailwind.config.*` file |
 | Animation | **GSAP** `^3.15.0` | ScrollTrigger for reveals + nav scroll state |
 | Smooth scroll | **Lenis** `^1.3.23` | package is `lenis` (`import Lenis from 'lenis'`), wired to GSAP ticker |
-| Deploy | **Vercel** | static, `vercel.json` present |
+| Deploy | **Undecided** | static `dist/` — host-agnostic, any static host works |
 | Node | `>=22.12.0` | |
 
 Scripts: `npm run dev`, `npm run build`, `npm run preview`.
