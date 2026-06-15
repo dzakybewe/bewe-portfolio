@@ -1,9 +1,16 @@
 ---
 import { getCollection } from 'astro:content';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const projects = (await getCollection('projects')).sort(
   (a, b) => a.data.order - b.data.order
 );
+
+// Build-time check: does public/projects/[slug].png exist? If so, render the
+// real thumbnail; otherwise fall back to the dark placeholder (see TODO below).
+const hasThumb = (slug: string) =>
+  fs.existsSync(path.join(process.cwd(), 'public', 'projects', `${slug}.png`));
 ---
 
 <section id="projects" class="w-full bg-cream py-12 lg:py-20">
@@ -13,32 +20,49 @@ const projects = (await getCollection('projects')).sort(
       Things I've<br />
       built and <em class="italic text-accent">shipped</em>.
     </h2>
-    <p class="projects-headline font-sans text-[13px] text-ink-light mb-6">
+    <p class="projects-headline font-sans text-[13px] text-ink-light mb-8">
       Click any project to read the full case study.
     </p>
 
-    <div>
+    <div class="project-cards">
       {
         projects.map((p) => (
-          <a href={`/projects/${p.id}`} class="project-row">
-            <div class="flex items-baseline gap-4 min-w-0">
-              <span class="font-serif text-[13px] text-rule shrink-0">
+          <a href={`/projects/${p.id}`} class="project-card">
+            {/* TODO: add screenshot at public/projects/{p.id}.png */}
+            {hasThumb(p.id) ? (
+              <img
+                src={`/projects/${p.id}.png`}
+                alt={`${p.data.title} screenshot`}
+                class="project-thumb"
+                loading="lazy"
+              />
+            ) : (
+              <div class="project-thumb-placeholder">
+                <span>thumbnail</span>
+              </div>
+            )}
+
+            <div class="project-card-body">
+              <span class="card-arrow" aria-hidden="true">↗</span>
+
+              <span class="font-serif text-[15px] text-rule">
                 {String(p.data.order).padStart(2, '0')}
               </span>
+
               <div class="min-w-0">
-                <h3 class="font-serif text-[16px] text-ink truncate">{p.data.title}</h3>
-                <p class="font-sans text-[13px] text-ink-light mt-0.5">
+                <h3 class="font-serif text-[24px] md:text-[28px] leading-[1.15] text-ink">
+                  {p.data.title}
+                </h3>
+                <p class="font-sans text-[15px] text-ink-light mt-1">
                   {p.data.subtitle} · {p.data.period}
                 </p>
               </div>
-            </div>
-            <div class="flex items-center gap-3 shrink-0">
+
               <div class="hidden sm:flex items-center gap-1.5">
                 {p.data.tags.slice(0, 3).map((t) => (
                   <span class="tag">{t}</span>
                 ))}
               </div>
-              <span class="row-arrow" aria-hidden="true">↗</span>
             </div>
           </a>
         ))
@@ -46,3 +70,79 @@ const projects = (await getCollection('projects')).sort(
     </div>
   </div>
 </section>
+
+<style>
+  .project-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .project-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 0.5px solid var(--color-rule);
+    background: var(--color-cream);
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  /* Desktop: thumbnail left (~40%) / content right (~60%) */
+  @media (min-width: 768px) {
+    .project-card {
+      grid-template-columns: 2fr 3fr;
+      align-items: stretch;
+    }
+  }
+  .project-card:hover {
+    border-color: var(--color-accent-border);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px -18px rgba(28, 18, 8, 0.35);
+  }
+
+  /* Thumbnail — fixed box, cover-cropped */
+  .project-thumb {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+  .project-thumb-placeholder {
+    width: 100%;
+    height: 280px;
+    background: #2a2010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .project-thumb-placeholder span {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #3a3020;
+  }
+
+  /* Content area — spread over full card height: number top, title center,
+     tags + arrow bottom */
+  .project-card-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px;
+    min-height: 280px;
+  }
+  /* Top-right corner arrow — signals the card opens */
+  .card-arrow {
+    position: absolute;
+    top: 20px;
+    right: 22px;
+    font-size: 14px;
+    color: var(--color-rule);
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .project-card:hover .card-arrow {
+    color: var(--color-accent);
+    transform: translate(2px, -2px);
+  }
+</style>
