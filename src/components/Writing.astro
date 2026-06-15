@@ -9,7 +9,7 @@ const articles = (await getCollection('writing')).sort(
 );
 ---
 
-<section id="writing" class="w-full bg-cream py-12 lg:py-20">
+<section id="writing" class="w-full bg-cream-2 py-12 lg:py-20">
   <div class="max-w-container mx-auto px-7 lg:px-8">
     <p class="eyebrow">Writing</p>
     <h2 class="writing-headline font-serif text-[26px] md:text-[28px] leading-[1.2] text-ink mb-3">
@@ -40,3 +40,11 @@ const articles = (await getCollection('writing')).sort(
     </div>
   </div>
 </section>
+
+<style>
+  /* Section bg is now cream-2, so the shared cream-2 row hover would be
+     invisible — use cream for a subtle highlight on this section instead. */
+  .writing-row:hover {
+    background: var(--color-cream);
+  }
+</style>
