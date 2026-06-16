@@ -45,7 +45,7 @@ Tokens declared once in `@theme {}` — Tailwind v4 emits both utility classes (
 | `cream-2` | `#F5F0E8` | alt section bg, row hover |
 | `ink` | `#1C1208` | primary text |
 | `ink-mid` | `#6A5540` | body text |
-| `ink-light` | `#A89070` | muted text, metadata |
+| `ink-light` | `#7A6048` | muted text, metadata |
 | `rule` | `#E2D5C0` | hairlines, borders |
 | `accent` | `#2A6B5E` | forest teal — links, eyebrows, emphasis |
 | `accent-light` | `#E2F2EF` | tag/badge fill |
@@ -54,7 +54,7 @@ Tokens declared once in `@theme {}` — Tailwind v4 emits both utility classes (
 | `dark-2` | `#130E06` | footer bg |
 | `dark-rule` | `#2A2010` | dark-section hairlines |
 | `dark-text` | `#C9B99A` | text on dark |
-| `dark-muted` | `#5A4A30` | muted text on dark |
+| `dark-muted` | `#93805B` | muted text on dark |
 
 ### Fonts
 
@@ -112,7 +112,9 @@ highlights:
   - Bullet shown on the case page
   - 'Quote any value with a colon: like pricing'   # YAML: colon-in-string needs quotes
 links:                                    # optional — omit the whole key if none
-  live: https://example.com
+  website: https://example.com
+  appStore: https://apps.apple.com/...
+  playStore: https://play.google.com/...
   github: https://github.com/...
   gitlab: https://gitlab.com/...
 ---
@@ -144,6 +146,6 @@ Markdown body — rendered into the article page.
 - [ ] **Logo** — replace text logo in [Nav.astro](src/components/Nav.astro) with `public/logo.svg` when ready.
 - [ ] **Domain** — set real domain in: `site:` in `astro.config.mjs`, canonical/OG tags in [Layout.astro](src/layouts/Layout.astro), and footer in [Footer.astro](src/components/Footer.astro).
 - [ ] **OG image** — add `public/og-image.png`, wire `og:image` in [Layout.astro](src/layouts/Layout.astro).
-- [ ] **Project links** — add real repo/live URLs: Pangkasin (GitHub), BiteWise (GitHub), Kartika Jasa Karya (live + repo), Sakera Kendari (repo). See per-file TODOs.
+- [ ] **Project links** — add real repo URLs: BiteWise (GitHub), Sakera Kendari (GitHub/GitLab). Kartika Jasa Karya and Umeds and Kalla Friends already have links.
 - [ ] **Articles** — 3 placeholder articles (`boring-technology`, `multi-tenant`, `shipping-solo`) — replace bodies with real writing.
 - [ ] **Dark mode** (optional) — hook left in [global.css](src/styles/global.css) if wanted later.
